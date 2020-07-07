@@ -27,6 +27,10 @@ const GatsbyLink = styled.a`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 `
 
 const Layout = ({ children }) => (
