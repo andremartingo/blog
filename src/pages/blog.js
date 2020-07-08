@@ -48,24 +48,38 @@ const IndexPage = ({ data }) => {
           })
           .map(({ node }) => (
             <Child>
-            <div key={node.id}>
-              <Link
-                to={node.frontmatter.path}
-                css={css`
-                  text-decoration: none;
-                  color: inherit;
-                `}
-              >
-                <div>
-                  image
-                </div>
-                <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
-                <div>
-                  <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                  <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
-                </div>
-              </Link>
-            </div>
+              <div key={node.id}>
+                <Link
+                  to={node.frontmatter.path}
+                  css={css`
+                    text-decoration: none;
+                    color: inherit;
+                  `}
+                >
+                  <img
+                    alt=""
+                    src={node.frontmatter.cover}
+                    sx={{
+                      position: `absolute`,
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      width: `100%`,
+                      height: `100%`,
+                      filter: `invert(100%)`,
+                      zIndex: -1,
+                      opacity: 0.08,
+                      objectFit: `cover`,
+                    }}
+                  />
+                  <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
+                  <div>
+                    <ArticleDate>{node.frontmatter.date}</ArticleDate>
+                    <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
+                  </div>
+                </Link>
+              </div>
             </Child>
           ))}
       </Content>
@@ -95,6 +109,7 @@ export const query = graphql`
             date(formatString: "DD MMMM, YYYY")
             rawDate: date
             path
+            cover
           }
           fields {
             slug

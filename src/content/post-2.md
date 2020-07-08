@@ -1,5 +1,6 @@
 ---
 title: "Second Title"
+cover: "gatsby-astronaut.png"
 date: "2019-03-18"
 draft: false
 path: "/blog/second-title"
