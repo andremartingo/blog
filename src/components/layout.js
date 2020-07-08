@@ -15,7 +15,7 @@ import "./layout.css"
 
 const Content = styled.div`
   margin: 0 auto;
-  max-width: 860px;
+  max-width: 1000px;
   padding: 0 1.0875rem 1rem;
   padding-top: 0;
 `
@@ -27,7 +27,6 @@ const GatsbyLink = styled.a`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -44,15 +43,15 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
+    render={(data) => (
       <>
         <Header siteTitle={data.site.siteMetadata.title} />
         <Content>
           <main>{children}</main>
           <Footer>
             <p>
-            © {new Date().getFullYear()}, Built with
-            {` `}
+              © {new Date().getFullYear()}, Built with
+              {` `}
             </p>
             <GatsbyLink href="https://www.gatsbyjs.org">Gatsby</GatsbyLink>
           </Footer>

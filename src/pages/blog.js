@@ -5,6 +5,7 @@ import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "./blog.css"
 
 const Content = styled.div`\
   display: flex;
@@ -15,9 +16,9 @@ const Content = styled.div`\
 `
 
 const Child = styled.div`
-    flex: 1 0 21%;
-    margin: 5px;
-    height: 100px;
+  flex: 1 0 21%;
+  margin: 5px;
+  height: 100px;
 `
 
 const ArticleDate = styled.h5`
@@ -39,6 +40,26 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Blog" />
+      <ul class="cards">
+        {data.allMarkdownRemark.edges
+          .filter(({ node }) => {
+            const rawDate = node.frontmatter.rawDate
+            const date = new Date(rawDate)
+            return date < new Date()
+          })
+          .map(({ node }) => (
+            <li class="cards__item">
+              <div class="card">
+                <img class="card__image" src={node.frontmatter.cover}></img>
+                <div class="card__content">
+                  <div class="card__title">{node.frontmatter.title}</div>
+                  <p class="card__text">{node.excerpt}. </p>
+                </div>
+              </div>
+            </li>
+          ))}
+      </ul>
+      {/* <SEO title="Blog" />
       <Content>
         {data.allMarkdownRemark.edges
           .filter(({ node }) => {
@@ -82,7 +103,7 @@ const IndexPage = ({ data }) => {
               </div>
             </Child>
           ))}
-      </Content>
+      </Content> */}
     </Layout>
   )
 }
