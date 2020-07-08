@@ -50,11 +50,19 @@ const IndexPage = ({ data }) => {
           .map(({ node }) => (
             <li class="cards__item">
               <div class="card">
-                <img class="card__image" src={node.frontmatter.cover}></img>
-                <div class="card__content">
-                  <div class="card__title">{node.frontmatter.title}</div>
-                  <p class="card__text">{node.excerpt}. </p>
-                </div>
+                <Link
+                  to={node.frontmatter.path}
+                  css={css`
+                    text-decoration: none;
+                    color: inherit;
+                  `}
+                >
+                  <img class="card__image" src={node.frontmatter.cover}></img>
+                  <div class="card__content">
+                    <div class="card__title">{node.frontmatter.title}</div>
+                    <p class="card__text">{node.excerpt}. </p>
+                  </div>
+                </Link>
               </div>
             </li>
           ))}
