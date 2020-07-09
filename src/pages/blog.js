@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "./blog.css"
 
-const Content = styled.div`\
+const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: 0 auto;
